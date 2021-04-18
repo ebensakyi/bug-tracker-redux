@@ -1,15 +1,27 @@
-import store from "./my-redux/store";
+import configureStore from "./store-with-react-toolkit/configureStore"
 
-import { addBug, resolveBug } from "./my-redux/actions";
+import { projectAdded, projectResolved,projectRemoved } from "./store-with-react-toolkit/projects";
+import { bugAdded, bugResolved,bugRemoved } from "./store-with-react-toolkit/bugs";
 
-store.dispatch(addBug("Bug1 added"));
-store.dispatch(resolveBug(1));
+const store = configureStore();
+
+
+store.dispatch(bugAdded({ description: "project1 added" }));
+store.dispatch(bugAdded({ description: "project2 added" }));
+store.dispatch(bugAdded({ description: "project3 added" }));
+store.dispatch(bugResolved({ id: 1 }));
+
+store.dispatch(bugRemoved({ id: 2}));
+
+store.dispatch(projectAdded({ description: "project1 added" }));
+store.dispatch(projectAdded({ description: "project2 added" }));
+store.dispatch(projectAdded({ description: "project3 added" }));
+store.dispatch(projectAdded({ description: "project4 added" }));
+store.dispatch(projectRemoved({ id: 1 }));
+
+store.dispatch(projectResolved({ id: 4 }));
 
 console.log("App Store", store.getState());
-
-
-
-
 
 function App() {
   return (
@@ -32,3 +44,49 @@ function App() {
 }
 
 export default App;
+
+
+
+
+// import configureStore from "./with-redux-toolkit/configureStore";
+
+// import { addproject, resolveproject } from "./store/projects";
+
+
+// const store = configureStore()
+
+// store.dispatch(addproject("project1 added"));
+// store.dispatch(addproject("project2 added"));
+// store.dispatch(addproject("project3 added"));
+// store.dispatch(addproject("project4 added"));
+// store.dispatch(addproject("project5 added"));
+
+// store.dispatch(resolveproject(3));
+
+// console.log("App Store", store.getState());
+
+
+
+
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <p>
+//           Edit <code>src/App.js</code> and save to reload.
+//         </p>
+//         <a
+//           className="App-link"
+//           href="https://reactjs.org"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Learn React
+//         </a>
+//       </header>
+//     </div>
+//   );
+// }
+
+// export default App;
