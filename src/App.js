@@ -7,6 +7,11 @@ import { userAdded,userRemoved } from "./store-with-react-toolkit/usrs";
 const store = configureStore();
 
 
+store.dispatch(userAdded({ description: "user1 added" }));
+store.dispatch(userAdded({ description: "user2 added" }));
+store.dispatch(userAdded({ description: "user3 added" }));
+store.dispatch(userRemoved({ id: 1 }));
+
 store.dispatch(bugAdded({ description: "bug1 added" }));
 store.dispatch(bugAdded({ description: "bug2 added" }));
 store.dispatch(bugAdded({ description: "bug3 added" }));
