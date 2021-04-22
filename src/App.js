@@ -1,8 +1,8 @@
-import configureStore from "./store-with-react-toolkit/configureStore"
+import configureStore from "./store_/configureStore"
 
-import { projectAdded, projectResolved,projectRemoved } from "./store-with-react-toolkit/projects";
-import { bugAdded, bugResolved,bugRemoved } from "./store-with-react-toolkit/bugs";
-import { userAdded,userRemoved } from "./store-with-react-toolkit/usrs";
+import { projectAdded, projectResolved,projectRemoved } from "./store_/projects";
+import { bugAdded, bugResolved,bugRemoved } from "./store_/bugs";
+import { userAdded,userRemoved } from "./store_/users";
 
 const store = configureStore();
 
