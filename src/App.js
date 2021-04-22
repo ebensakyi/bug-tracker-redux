@@ -2,13 +2,14 @@ import configureStore from "./store-with-react-toolkit/configureStore"
 
 import { projectAdded, projectResolved,projectRemoved } from "./store-with-react-toolkit/projects";
 import { bugAdded, bugResolved,bugRemoved } from "./store-with-react-toolkit/bugs";
+import { userAdded,userRemoved } from "./store-with-react-toolkit/usrs";
 
 const store = configureStore();
 
 
-store.dispatch(bugAdded({ description: "project1 added" }));
-store.dispatch(bugAdded({ description: "project2 added" }));
-store.dispatch(bugAdded({ description: "project3 added" }));
+store.dispatch(bugAdded({ description: "bug1 added" }));
+store.dispatch(bugAdded({ description: "bug2 added" }));
+store.dispatch(bugAdded({ description: "bug3 added" }));
 store.dispatch(bugResolved({ id: 1 }));
 
 store.dispatch(bugRemoved({ id: 2}));
