@@ -1,0 +1,10 @@
+{
+    "bugs": [
+      { "id": 1, "description": "Bug 1", "resolved": false },
+      { "id": 2, "description": "Bug 2", "resolved": false },
+      { "id": 3, "description": "Bug 3", "resolved": true },
+      { "id": 4, "description": "Bug 4", "resolved": true },
+      { "id": 5, "description": "Bug 5", "resolved": false }
+
+    ]
+  }
