@@ -16,25 +16,27 @@ import {
 import { userAdded } from "./store-with-react-toolkit/users";
 const store = configureStore();
 
-store.dispatch(userAdded({ name: "User 1" }));
-store.dispatch(userAdded({ name: "User 2" }));
 
-store.dispatch(bugAdded({ description: "bug1 added" }));
-store.dispatch(bugAdded({ description: "bug2 added" }));
-store.dispatch(bugAdded({ description: "bug3 added" }));
-store.dispatch(bugResolved({ id: 1 }));
+store.dispatch({type:"error",payload:{message:"An error ocuured"}})
+ //store.dispatch(userAdded({ name: "User 1" }));
+// store.dispatch(userAdded({ name: "User 2" }));
 
-//store.dispatch(bugRemoved({ id: 2 }));
+// store.dispatch(bugAdded({ description: "bug1 added" }));
+// store.dispatch(bugAdded({ description: "bug2 added" }));
+// store.dispatch(bugAdded({ description: "bug3 added" }));
+// store.dispatch(bugResolved({ id: 1 }));
 
-store.dispatch(projectAdded({ description: "project1 added" }));
-store.dispatch(projectAdded({ description: "project2 added" }));
-store.dispatch(projectAdded({ description: "project3 added" }));
-store.dispatch(projectAdded({ description: "project4 added" }));
-//store.dispatch(projectRemoved({ id: 1 }));
+// //store.dispatch(bugRemoved({ id: 2 }));
 
-store.dispatch(projectResolved({ id: 4 }));
+// store.dispatch(projectAdded({ description: "project1 added" }));
+// store.dispatch(projectAdded({ description: "project2 added" }));
+// store.dispatch(projectAdded({ description: "project3 added" }));
+// store.dispatch(projectAdded({ description: "project4 added" }));
+// //store.dispatch(projectRemoved({ id: 1 }));
 
-store.dispatch(bugAssignedToUser({ bugId: 1, userId: 1 }));
+// store.dispatch(projectResolved({ id: 4 }));
+
+// store.dispatch(bugAssignedToUser({ bugId: 1, userId: 1 }));
 
 const unresolvedBugs = getUnresolvedBugs(store.getState());
 const userBugs = getBugsByUser(1)(store.getState())
