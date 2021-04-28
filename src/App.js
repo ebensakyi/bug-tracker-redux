@@ -1,10 +1,10 @@
-import configureStore from "./store-with-react-toolkit/configureStore";
+import configureStore from "./store/configureStore";
 
 import {
   projectAdded,
   projectResolved,
   projectRemoved,
-} from "./store-with-react-toolkit/projects";
+} from "./store/projects";
 import {
   bugAdded,
   bugAssignedToUser,
@@ -12,15 +12,30 @@ import {
   bugRemoved,
   getUnresolvedBugs,
   getBugsByUser,
-} from "./store-with-react-toolkit/bugs";
-import { userAdded } from "./store-with-react-toolkit/users";
+} from "./store/bugs";
+import { userAdded } from "./store/users";
 const store = configureStore();
 
 
-store.dispatch({type:"error",payload:{message:"An error ocuured"}})
- //store.dispatch(userAdded({ name: "User 1" }));
+
+
+
+
+
+
+
+//store.dispatch({type:"error",payload:{message:"An error ocuured"}})
+store.dispatch(userAdded({ name: "User 1" }));
 // store.dispatch(userAdded({ name: "User 2" }));
 
+store.dispatch({
+  type: "apiCallBegan",
+  payload: {
+    url: "/bugs",
+    onSuccess: "bugsReceived",
+    onError: "apiRequesFailed",
+  },
+});
 // store.dispatch(bugAdded({ description: "bug1 added" }));
 // store.dispatch(bugAdded({ description: "bug2 added" }));
 // store.dispatch(bugAdded({ description: "bug3 added" }));
@@ -39,10 +54,7 @@ store.dispatch({type:"error",payload:{message:"An error ocuured"}})
 // store.dispatch(bugAssignedToUser({ bugId: 1, userId: 1 }));
 
 const unresolvedBugs = getUnresolvedBugs(store.getState());
-const userBugs = getBugsByUser(1)(store.getState())
-
-console.log("unresolvedBugs", unresolvedBugs);
-console.log("userBugs", userBugs);
+const userBugs = getBugsByUser(1)(store.getState());
 
 function App() {
   return (
@@ -65,41 +77,3 @@ function App() {
 }
 
 export default App;
-
-// import configureStore from "./with-redux-toolkit/configureStore";
-
-// import { addproject, resolveproject } from "./store/projects";
-
-// const store = configureStore()
-
-// store.dispatch(addproject("project1 added"));
-// store.dispatch(addproject("project2 added"));
-// store.dispatch(addproject("project3 added"));
-// store.dispatch(addproject("project4 added"));
-// store.dispatch(addproject("project5 added"));
-
-// store.dispatch(resolveproject(3));
-
-// console.log("App Store", store.getState());
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;

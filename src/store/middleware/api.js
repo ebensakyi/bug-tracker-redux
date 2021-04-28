@@ -1,15 +1,16 @@
-import { axios } from "axios";
+import  axios from "axios";
 const api = ({ dispatch }) => (next) => async (action) => {
   if (action.type !== "apiCallBegun") return next(action);
+  next(action)
   const { url, method, data, onSuccess, onError } = action.payload;
   try {
     let response = await axios.request({
-      baseURL: "http://localhost:5000/bugs",
+      baseURL: "http://localhost:5000",
       url,
       method,
       data,
     });
-
+console.log(response)
     dispatch({ type: onSuccess, payload: response.data });
   } catch (error) {
     dispatch({ type: onError, payload: error.message });

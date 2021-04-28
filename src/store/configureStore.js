@@ -1,11 +1,20 @@
-import { createStore } from "redux";
-import reducer from "./bugs";
+/* eslint-disable import/no-anonymous-default-export */
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import logger from "./middleware/logger";
+import toast from "./middleware/toast";
+import api from "./middleware/api";
 
+import reducer from "./reducers";
 
-export default function configureStore() {
-  const store = createStore(
+export default function () {
+  return configureStore({
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
-  return store;
+    middleware: [
+      ...getDefaultMiddleware(), 
+       api,
+      logger("We are logging to console"),
+      toast,
+    
+    ],
+  });
 }
